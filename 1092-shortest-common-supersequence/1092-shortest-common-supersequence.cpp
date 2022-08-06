@@ -34,11 +34,6 @@ public:
                     ans += s[i-1];
                     i--;
                 }
-                else if(dp[i-1][j] < dp[i][j-1])
-                {
-                    ans += t[j-1];
-                    j--;
-                }
                 else
                 {
                     ans += t[j-1];
