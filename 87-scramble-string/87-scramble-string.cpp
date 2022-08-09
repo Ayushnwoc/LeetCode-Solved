@@ -15,20 +15,20 @@ public:
             return true;
         }
         int n = s.length();
-        vector<int>v(26 , 0);
-        for(int i = 0;i<n;i++)
-        {
-            v[s[i]-'a']++;
-            v[t[i]-'a']--;
-        }
-        for(int i = 0;i<26;i++)
-        {
-            if(v[i] !=0)
-            {
-                m[temp] = 10;
-                return false;
-            }
-        }
+        // vector<int>v(26 , 0);
+        // for(int i = 0;i<n;i++)
+        // {
+        //     v[s[i]-'a']++;
+        //     v[t[i]-'a']--;
+        // }
+        // for(int i = 0;i<26;i++)
+        // {
+        //     if(v[i] !=0)
+        //     {
+        //         m[temp] = 10;
+        //         return false;
+        //     }
+        // }
         
         for(int i = 1;i<n;i++)
         { 
