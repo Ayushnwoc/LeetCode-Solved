@@ -9,18 +9,17 @@ public:
         }
         vector<double>ans(n,0);
         ans[start] = 1;
-        queue<pair<int,double>> q;
-        q.push({start , 1});
+        priority_queue<pair<double , int>> q;
+        q.push({1 , start});
         while(!q.empty()){
-            int front = q.front().first;
-            double prob = q.front().second;
+            int front = q.top().second;
+            double prob = q.top().first;
             q.pop();
             for(int i = 0;i<adj[front].size();i++)
             {
-                //cout<<ans[adj[front][i].first]<<" "<<adj[front][i].second<<endl;
                 if(ans[adj[front][i].first] < prob*adj[front][i].second){
                     ans[adj[front][i].first] = prob*adj[front][i].second;
-                    q.push({adj[front][i].first , ans[adj[front][i].first]});
+                    q.push({ans[adj[front][i].first] , adj[front][i].first});
                 }
             }
         }
