@@ -12,10 +12,6 @@ public:
         while(itr != m.end()){
             int avg = (itr->first.first + itr->first.second )/2;
             if(start > itr->first.first && start < itr->first.second){
-                if(start == 2 && end == 8)
-                {
-                    cout<<"spe "<<itr->first.first<<" "<<itr->first.second<<endl;
-                }
                 return false;
             }
             if(end >itr->first.first && end<itr->first.second){
