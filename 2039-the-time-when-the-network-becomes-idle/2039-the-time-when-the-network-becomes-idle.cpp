@@ -23,13 +23,17 @@ public:
                 }
             }
         }
+        priority_queue<pair<int,int> , vector<pair<int ,int>> , greater<pair<int,int>> >pq;
+        for(int i = 1;i<n;i++)
+        {
+            pq.push({time[i] , patience[i]});
+        }
         int ans = 0;
-        for(int i = 1;i<n;i++){
-            int firstTimeReceive = time[i] * 2; // Send to master server, and receive from master server
-            int waitingTime = firstTimeReceive - 1;
-            int numResend = waitingTime / patience[i];
-            int timeDone = firstTimeReceive + numResend * patience[i];
-            ans = max(ans, timeDone); 
+        while(!pq.empty()){
+            int front = pq.top().first;
+            int extra = pq.top().second;
+            ans = max(ans  , (front * 2) + (((2*front)-1)/extra)*extra );
+            pq.pop();
         }
         return ans+1;
     }
