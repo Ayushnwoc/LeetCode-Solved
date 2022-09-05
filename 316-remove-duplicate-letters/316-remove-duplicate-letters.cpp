@@ -3,6 +3,7 @@ public:
     string removeDuplicateLetters(string s) {
         int n = s.length();
         unordered_map<char,int>m;
+        //for storing already pushed
         vector<int>v(26 , 0);
         for(int i = 0;i<n;i++){
             m[s[i]]++;
@@ -14,6 +15,7 @@ public:
                 m[s[i]]--;
                 continue;
             }
+            // popping until we get the required elements
             while(!st.empty() && s[i] < st.top() && m[st.top()] > 1){
                 m[st.top()]--;
                 v[st.top() - 'a'] = 0;
@@ -26,6 +28,7 @@ public:
             ans += st.top();
             st.pop();
         }
+        //reverse because stack stores in reverse order
         reverse(ans.begin() , ans.end());
         return ans;
     }
