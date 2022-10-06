@@ -5,7 +5,7 @@ public:
         int n = s.length() , m = p.length();
         if( z == 1)
         {
-            dp.resize(200 , vector<int>(200 , -1));
+            dp.resize(100, vector<int>(100 , -1));
         }
         if(s.empty() && p.empty()){
             return 1;
