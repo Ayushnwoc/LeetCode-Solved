@@ -5,7 +5,7 @@ public:
         vector<int>dp(n+1 , 0);
         int mod = 1e9 + 7;
         dp[0]= 1;
-        map<char,int>m;
+        unordered_map<char,int>m;
         for(int i = 1;i<=n;i++){
             dp[i] = ((dp[i-1]%mod)*2)%mod;
             if(m.find(s[i-1]) != m.end()){
