@@ -18,17 +18,7 @@ public:
     int maxProfit(vector<int>& prices) {
         int n = prices.size();
         dp.resize(n+1 , vector<vector<int>>(2 , vector<int>(3,INT_MIN)));
-        int buy = prices[0];
-        int profit = 0;
-        for(int i = 1 ;i<prices.size() ; i++){
-            if(buy > prices[i]){
-                buy = prices[i];
-            }
-            else if(buy < prices[i]){
-                profit = max(prices[i] - buy , profit);
-            }
-        }
         int ans = max(-prices[0] + f(1 , 1 , 0 , prices) , f(1 , 0 , 0 , prices));
-        return max(profit , ans);
+        return  ans;
     }
 };
