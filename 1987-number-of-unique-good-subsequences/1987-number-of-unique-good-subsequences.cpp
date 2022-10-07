@@ -1,5 +1,6 @@
 class Solution {
 public:
+    //one of the best solutions
     int numberOfUniqueGoodSubsequences(string binary) {
         int n = binary.length();
         int dp[2][2] ={{0}};
@@ -13,6 +14,7 @@ public:
                 dp[1][1] = (dp[1][1] + dp[1][0] + 1)%mod;
             }
         }
+        
         return (dp[0][0] + dp[1][1] + dp[1][0])%mod;
     }
 };
