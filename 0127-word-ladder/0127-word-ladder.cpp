@@ -11,7 +11,6 @@ public:
     }
     int ladderLength(string beginWord, string endWord, vector<string>& wordList) {
         int n = wordList.size();
-        vector<int>vis(n , -1);
         int index = 0;
         queue<string>q;
         int vf = 1;
@@ -47,6 +46,9 @@ public:
                     else if(ma[wordList[i]] >= ma[f] + 1){
                         ma[wordList[i]] = ma[f] + 1;
                         q.push(wordList[i]);
+                    }
+                    if(wordList[i] == endWord){
+                        return ma[endWord];
                     }
                 }
                 else{
