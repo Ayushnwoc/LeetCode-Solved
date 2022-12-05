@@ -30,9 +30,9 @@ class Solution {
             if(vis[i][j].first >= a and vis[i][j].second <= b){
                 continue;
             }
-            vis[i][j] = {temp[2] , temp[3]};
-            // vis[i][j].first = max(vis[i][j].first , temp[2]);
-            // vis[i][j].second = min(vis[i][j].second , temp[3]);
+            //vis[i][j] = {temp[2] , temp[3]};
+            vis[i][j].first = max(vis[i][j].first , temp[2]);
+            vis[i][j].second = min(vis[i][j].second , temp[3]);
             for(int k=0; k<4; k++){
                 int x=i+dir[k][0];
                 int y=j+dir[k][1];
