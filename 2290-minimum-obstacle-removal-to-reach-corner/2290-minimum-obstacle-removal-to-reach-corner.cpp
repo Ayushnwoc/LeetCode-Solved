@@ -2,22 +2,38 @@ class Solution {
     
 public:
     int minimumObstacles(vector<vector<int>>& grid) {
-        const int n=grid.size(), m = grid[0].size();
-        const vector<pair<int,int>> dirs = {{0,1}, {0, -1}, {1, 0}, {-1,0}};
-        deque<tuple<int,int,int>> q; //-dis, i, j
-        q.emplace_back(grid[0][0] = -1,0,0);
-        while(!q.empty()){
-            auto [dis, i, j] = q.front(); q.pop_front();            
-            if(i == n-1 && j == m-1) return -dis-1; 
-            for(auto [di, dj] : dirs){
-                int x = i+di, y = j+dj;
-                if(x<0 || x>=n || y<0 || y>=m || grid[x][y] < 0) continue;
-                int dis2 = dis - grid[x][y];
-                if(dis2 == dis) q.emplace_front(dis2, x, y);
-                else q.emplace_back(dis2, x, y);           
-                grid[x][y] = dis2;
+        int m=grid.size(), n=grid[0].size();
+        vector<int> dir={0,1,0,-1,0};
+        vector<vector<int>> dist(m, vector<int> (n,INT_MAX));
+        vector<vector<bool>> vis(m, vector<bool>(n,0));
+        deque<pair<int,int>>q;
+        dist[0][0]=0;
+        q.push_front({0,0});
+        while(!q.empty())
+        {
+            auto cur=q.front();
+            q.pop_front();
+            int x=cur.first;
+            int y=cur.second;
+            for(int i=0;i<4;i++)
+            {
+                int cx=x+dir[i];
+                int cy=y+dir[i+1];
+            if(cx>=0 and cy>=0 and cx<m and cy<n)
+            {
+                if(!vis[cx][cy])
+                {
+                    dist[cx][cy]=dist[x][y]+(grid[cx][cy]==1);
+                    if(grid[cx][cy]==1)
+                        q.push_back({cx,cy});//obstacle cell pushed at the end
+                    else
+                    q.push_front({cx,cy}); //empty cell pushed on top
+                    vis[cx][cy] = true;
+                }
             }
         }
-        return -1;
+    }
+        return dist[m-1][n-1];
+    
     }
 };
