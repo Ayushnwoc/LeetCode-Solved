@@ -39,6 +39,10 @@ class Solution
     }
     void dfsi(int node , vector<int>&visi , vector<vector<int>>&revers)
     {
+        if(visi[node] == 1)
+        {
+            return;
+        }
         visi[node] = 1;
         for(int i = 0;i<revers[node].size();i++){
             if(visi[revers[node][i]] != 1){
