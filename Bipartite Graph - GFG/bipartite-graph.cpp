@@ -31,16 +31,10 @@ public:
             color = 1;
         }
         for(auto i : adj[index]){
-            if(!vis[i]){
 	            if(!dfs(vis, adj , V, i, color)){
 	                return false;
 	            }
-	        }
-	        else{
-	            if(vis[i] != color){
-	                return false;
-	            }
-	        }
+	        
         }
         return true;
     }
